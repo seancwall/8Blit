@@ -67,7 +67,7 @@ drawField:
 	bne drawField            ;              branch up to drawField if result not zero
 
 	; end of screen - enter blanking
-    lda #%00000010           ;              turn on vblank with d2
+    lda #%11000010           ;              turn on vblank with d2
     sta VBLANK
 
 	; 30 scanlines of overscan
