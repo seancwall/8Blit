@@ -37,9 +37,10 @@ clear:       	sta 	0,x 				; $0 to $7F (0-127) reserved OS page zero, $80 to $FF
 				inx 
 				bne 	clear
 
-				lda 	#0
-				sta 	ANISEQ				; Initialize to 0
-				sta 	CTRLPF_SHADOW		; Initialize to 0
+				;These are unneeded due to RAM clear above
+				;lda 	#0
+				;sta 	ANISEQ				; Initialize to 0
+				;sta 	CTRLPF_SHADOW		; Initialize to 0
 
 				ldy 	#ANISPEED-1			; Use reg y for animation timer. Initialize with TIMETOCHANGE to trigger the first screen update. 
 											; The -1 is interpreted by the compiler before execution.
@@ -48,7 +49,7 @@ clear:       	sta 	0,x 				; $0 to $7F (0-127) reserved OS page zero, $80 to $FF
 
 startframe:		lda 	#0					; Start of new frame
 				sta 	VBLANK				; Start of vertical blank processing
-				lda 	#%0000010			; Writing a bit into the D1 vsync latch
+				lda 	#%00000010			; Writing a bit into the D1 vsync latch
 				sta 	VSYNC 
 				sta 	WSYNC
 				sta 	WSYNC
