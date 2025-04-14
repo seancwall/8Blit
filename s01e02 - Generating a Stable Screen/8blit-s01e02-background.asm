@@ -19,7 +19,7 @@
 
 BLUE           = $9a         ;              define symbol for TIA color (NTSC)
 
-	seg
+	seg Code
 	org $f000
 
 reset:
@@ -27,7 +27,7 @@ reset:
 	ldx #0                   ;              load the value 0 into (x)
 	lda #0                   ;              load the value 0 into (a)
 clear:                       ;              define a label 
-	sta 0,x                  ;              store value in (a) at address of 0 with offset (x)
+	sta $00,x                ;              store value in (a) at address of 0 with offset (x)
 	inx                      ;              inc (x) by 1. it will count to 255 then rollover to 0
 	bne clear                ;              branch up to the 'clear' label if (x) != 0
 
