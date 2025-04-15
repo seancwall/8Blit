@@ -43,7 +43,7 @@ clear:       	sta 	0,x 				; $0 to $7F (0-127) reserved OS page zero, $80 to $FF
 				;sta 	CTRLPF_SHADOW		; Initialize to 0
 
 				ldy 	#ANISPEED-1			; Use reg y for animation timer. Initialize with TIMETOCHANGE to trigger the first screen update. 
-											; The -1 is interpreted by the compiler before execution.
+											; The -1 is interpreted by the ASSEMBLER!!!!! before execution.
 
 				; --------------------------- Begin main loop -------------------------------------
 
@@ -139,7 +139,7 @@ drawfield: 		sta 	WSYNC
 
 				; --------------------------- End of screen - enter blanking ----------------------
 
-    			lda 	#%01000010 			; set D0, D6 of vblank register
+    			lda 	#%01000010 			; set D1, D6 of vblank register
     			sta 	VBLANK				    
 
 				; -------------------------- 30 scanlines of overscan -----------------------------
